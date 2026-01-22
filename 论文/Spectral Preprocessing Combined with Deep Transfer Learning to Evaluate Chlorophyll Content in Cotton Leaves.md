@@ -68,3 +68,48 @@ SVR 与传统回归追求“误差平方和最小”不同，它引入了一个*
     
 - **泛化能力**：由于其追求的是“结构风险最小化”（即模型既要准，又要简单），通常比普通线性回归更不容易过拟合。
 ![](assets/Spectral%20Preprocessing%20Combined%20with%20Deep%20Transfer%20Learning%20to%20Evaluate%20Chlorophyll%20Content%20in%20Cotton%20Leaves/file-20260122140015183.png)
+
+### 3. 交叉验证指标 (Cross-Validation Metrics)
+
+这组指标是在模型训练阶段，通过你提到的“五折交叉验证”计算出来的，反映了模型的**稳定性**。
+
+- **$R^2_{CV}$ (Cross-Validation R-squared)**：
+    
+    - **定义**：交叉验证决定系数。
+        
+    - **意义**：模型在交叉验证中解释变量变异的能力。
+        
+    - **标准**：越接近 **1** 越好。通常 $R^2_{CV} > 0.5$ 认为模型有意义，$R^2_{CV} > 0.8$ 认为模型非常出色。
+        
+- **RMSECV (Root Mean Square Error of Cross-Validation)**：
+    
+    - **定义**：交叉验证均方根误差。
+        
+    - **意义**：衡量模型在训练过程中的平均偏差。
+        
+    - **标准**：数值越**小**越好。它与你的原始数据单位一致。如果 RMSECV 远大于训练集的误差，说明模型可能存在过拟合。
+        
+
+---
+
+### 4. 外部验证/预测指标 (External Prediction Metrics)
+
+这组指标是使用模型从未见过的新数据（测试集/独立验证集）进行预测得出的，反映了模型的**实战能力**。
+
+- **$R^2_P$ (Prediction R-squared)**：
+    
+    - **定义**：预测集决定系数。
+        
+    - **意义**：衡量模型对新样本预测结果的拟合优度。
+        
+    - **标准**：越接近 **1** 越好。它反映了模型的泛化能力。
+        
+- **RMSEP (Root Mean Square Error of Prediction)**：
+    
+    - **定义**：预测均方根误差。
+        
+    - **意义**：模型在实际预测新样本时的平均误差。
+        
+    - **标准**：数值越**小**越好。这是衡量模型好坏最关键的指标，因为它代表了你未来使用该模型时的真实精度。
+
+![](assets/Spectral%20Preprocessing%20Combined%20with%20Deep%20Transfer%20Learning%20to%20Evaluate%20Chlorophyll%20Content%20in%20Cotton%20Leaves/file-20260122143840086.png)
